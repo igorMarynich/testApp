@@ -1,0 +1,120 @@
+page-menu {
+
+}
+
+.logo-angular-icon ion-icon::before {
+  color: red;
+  font-size: 35px;
+}
+
+.options ion-icon::before {
+  font-size: 25px;
+  margin-top: 5px;
+}
+.options {
+  width: 50px;
+  display: flex;
+  justify-content: end;
+}
+ .plaMyPlaMypro {
+   display: flex;
+   justify-content: center;
+ }
+
+
+
+.conditionDivPop {
+  display: flex;
+  justify-content: center;
+  margin-right: 100px;
+}
+
+.myCard {
+  display: flex;
+  height: 20px;
+}
+
+.card-md p {
+  margin: 13px 0px 2px !important;
+  line-height: unset;
+}
+
+.ion-card-img img {
+  width: 408px;
+  height: 200px;
+}
+
+ .div-searchbar {
+   display: flex;
+   justify-content: center;
+ }
+
+ //.conditionDiv {
+ //   display: flex;
+ //   justify-content: space-between;
+ // }
+
+ .countryCity {
+   display: flex;
+ }
+
+ .ion-card-img {
+   position: relative;
+ }
+
+.ion-card-chip {
+  position: absolute;
+  top: 5%;
+  left: 75%;
+  font-size: 2.0em;
+  width: 100%;
+  font-weight: bold;
+  color: #fff;
+}
+
+.searchbar-md .searchbar-search-icon {
+  left: 10px;
+  top: 5px;
+}
+
+.searchbar-md .searchbar-input {
+  padding: 0px 55px;
+}
+
+ion-label {
+  font-size: 11px;
+}
+
+.distance {
+  display: flex;
+  justify-content: start;
+}
+
+.rateDis {
+  display: flex;
+  justify-content: space-between;
+}
+
+ion-select {
+  position: absolute;
+}
+
+.conditionDivPop ion-label {
+  font-size: 15px;
+}
+
+.conditionDivPop .label-md {
+  margin: 12px 0px 12px 0;
+}
+
+.conditionRange ion-badge {
+  padding-top: 23px;
+}
+
+.conditionRange {
+  margin-top: -20px;
+}
+
+
+
+

@@ -1,0 +1,93 @@
+<!--
+  Generated template for the MyProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-1>
+        <div class="logo-angular-icon" >
+          <ion-icon  name="logo-angular" (click)="home()"></ion-icon>
+        </div>
+      </ion-col>
+      <ion-col col-10>
+        <div class="plaMyPlaMypro" >
+          <div><button ion-button small outline color="light" (click)="places()">places</button></div>
+          <div><button ion-button small outline color="light" (click)="myPlace()">my Places</button></div>
+          <div><button ion-button small outline>my Profile</button></div>
+        </div>
+      </ion-col>
+      <ion-col col-1 class="options">
+        <div><ion-icon name="options"></ion-icon></div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-title text-center>My profile</ion-title>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12 col-md-6>
+        <div class="ava">
+        <div>
+        <img *ngIf="!image" (click)="presentActionSheet()" width="200" height="250" src="data:image/jpeg;base64,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" alt="">
+        <img *ngIf="image" (click)="presentActionSheet()" [(ngModel)]="image" width="200" height="250" [src]="image" alt=""><br>
+          <div class="avaButton"><button ion-button (click)="presentActionSheet()">Download Photo</button></div>
+        </div>
+        </div>
+      </ion-col>
+      <ion-col col-12 col-md-6>
+        <form #loginForm="ngForm">
+          <ion-list>
+            <ion-item class="myInput">
+              <ion-input *ngIf="condition" readonly="{{myState}}" [(ngModel)]="result.firstName" type="text" text name="firstName"></ion-input>
+              <ion-label *ngIf="loginForm.form.touched && result.firstName == 0" color="danger" stacked> FirstName is required.</ion-label>
+              <p *ngIf="!condition">{{result.firstName}}</p>
+            </ion-item>
+            <ion-item class="myInput">
+          <ion-input *ngIf="condition" readonly="{{myState}}" [(ngModel)]="result.lastName" type="text" text name="lastName"></ion-input>
+              <ion-label *ngIf="loginForm.form.touched && result.lastName == 0" color="danger" stacked> LastName is required.</ion-label>
+              <p *ngIf="!condition">{{result.lastName}}</p>
+            </ion-item>
+            <ion-item class="myInput">
+              <ion-input *ngIf="condition" readonly="{{myState}}" type="email" email [(ngModel)]="result.email" name="email"></ion-input>
+              <ion-label *ngIf="loginForm.form.invalid && loginForm.form.dirty && loginForm.form.touched" color="danger" stacked> Email is required.</ion-label>
+              <p *ngIf="!condition">{{result.email}}</p>
+            </ion-item>
+            <ion-item class="myInput">
+          <ion-input *ngIf="condition" readonly="{{myState}}" [(ngModel)]="result.password" type="password" password name="password"></ion-input>
+              <ion-label *ngIf="loginForm.form.touched && result.password == 0" color="danger" stacked> Password is required.</ion-label>
+              <p *ngIf="!condition">{{result.password}}</p>
+            </ion-item>
+            <div class="myProfileButton">
+              <button ion-button color="secondary" [disabled]="condition" (click)="myEnable()">Edit</button>
+              <button ion-button color="primary" [disabled]="loginForm.form.invalid || !condition || result.firstName == 0 || result.lastName == 0 || result.password == 0 " (click)="myDisable()">Save</button>
+            </div>
+          </ion-list>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<!--<form #loginForm="ngForm">-->
+  <!--<ion-title>Login</ion-title>-->
+  <!--<ion-list>-->
+    <!--<ion-item>-->
+      <!--<ion-input placeholder="Email" type="email" email [(ngModel)]="email" name="email"></ion-input>-->
+      <!--<ion-label *ngIf="!loginForm.form.valid && email != 0 && password != 0" color="danger" stacked>Invalid Email</ion-label>-->
+      <!--<ion-label *ngIf="!loginForm.form.valid && password != 0 && email == 0" color="danger" stacked>Empty Email</ion-label>-->
+    <!--</ion-item>-->
+    <!--<ion-item>-->
+      <!--<ion-input placeholder="Password" type="password" password [(ngModel)]="password" name="password"></ion-input>-->
+      <!--<ion-label *ngIf="loginForm.form.valid && password == 0" color="danger" stacked>Empty Password</ion-label>-->
+    <!--</ion-item>-->
+    <!--<ion-label *ngIf="loginForm.form.valid && statusLogin == false" stacked color="danger">Invalid User</ion-label>-->
+    <!--<button ion-button [disabled]="!loginForm.form.valid" (click)="login()">Login</button>-->
+  <!--</ion-list>-->
+<!--</form>-->
+

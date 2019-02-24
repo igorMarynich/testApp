@@ -1,0 +1,50 @@
+page-my-profile {
+  .myProfileButton {
+    margin-top: 19%;
+    display: flex;
+    justify-content: flex-end;
+  }
+  //.logo-angular ion-icon::before {
+  //  color: red;
+  //  font-size: 35px;
+  //}
+}
+
+//.options ion-icon::before {
+//  font-size: 35px;
+//  margin: 5px;
+//}
+.ava {
+  display: flex;
+  justify-content: center;
+  background: antiquewhite;
+  padding: 10px;
+}
+
+.logo-angular-icon ion-icon::before {
+  color: red;
+  font-size: 35px;
+
+}
+
+
+.options ion-icon::before {
+  font-size: 22px !important;
+}
+.options {
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: flex-end;
+}
+.plaMyPlaMypro {
+  display: flex;
+  justify-content: center;
+}
+
+.avaButton {
+  margin-left: 10%;
+}
+
+
+

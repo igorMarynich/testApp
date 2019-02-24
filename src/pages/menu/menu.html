@@ -1,0 +1,198 @@
+<!--
+  Generated template for the MenuPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-1>
+        <div class="logo-angular-icon" >
+        <ion-icon  name="logo-angular" (click)="home()"></ion-icon>
+      </div>
+      </ion-col>
+      <ion-col col-10>
+        <div class="plaMyPlaMypro" >
+        <div><button ion-button small outline>places</button></div>
+        <div><button ion-button small outline color="light" (click)="myPlace()">my Places</button></div>
+        <div><button ion-button small outline color="light" (click)="myProfile()">my Profile</button></div>
+      </div>
+      </ion-col>
+      <ion-col col-1 class="options">
+        <div><ion-icon name="options" (click)="toggle()"></ion-icon></div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-header>
+
+
+<ion-content padding>
+  <div class="conditionDiv" *ngIf="!conditionDiv">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-12 col-md-4>
+    <div class="div-searchbar">
+      <div>
+        <ion-searchbar (ionInput)="getTopics($event)"></ion-searchbar>
+      </div>
+    </div>
+        </ion-col>
+        <ion-col col-12 col-md-4>
+    <div class="conditionDivPop">
+        <div><ion-label>Sort By</ion-label></div>
+        <div><ion-select  interface="popover" placeholder="Select One">
+            <ion-option (ionSelect)="sortResultsLow()">
+              Rate to height
+            </ion-option>
+            <ion-option (ionSelect)="sortResultsHeight()">
+              Rate to low
+            </ion-option>
+          <ion-option (ionSelect)="sortResultsNear()">
+            Near place
+          </ion-option>
+          <ion-option (ionSelect)="sortResultsFar()">
+            Far away place
+          </ion-option>
+        </ion-select></div>
+    </div>
+        </ion-col>
+        <ion-col col-12 col-md-4>
+          <ion-grid>
+            <ion-row>
+              <ion-col col-9>
+          <ion-list class="conditionRange">
+          <ion-item>
+            <ion-range min="0" max="{{max}}" [(ngModel)]="saturation" color="secondary" pin=“true” (ionChange)="change(saturation)">
+              <ion-label range-left>0</ion-label>
+              <ion-label range-right>{{max}}</ion-label>
+            </ion-range>
+          </ion-item>
+            <!--<p>{{saturation}}</p>-->
+          </ion-list>
+              </ion-col>
+              <ion-col col-3>
+                <ion-badge _ngcontent-c0="" color="secondary" item-end="" class="badge badge-ios badge-ios-secondary">{{saturation}}</ion-badge>
+              </ion-col>
+              </ion-row>
+            </ion-grid>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+
+
+    <!--<div *ngFor="let result of results">-->
+      <!--<ion-card>-->
+        <!--<ion-grid>-->
+          <!--<ion-row>-->
+            <!--<ion-col col-6>-->
+              <!--<img src="{{result.photoURL}}"  onerror="this.onerror=null;this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7bEXHvacCtEHaujrzbhOyvjbvtUOgKhaPLBZlmqtD8Y5whKQK';" />-->
+            <!--</ion-col>-->
+            <!--<ion-col col-6>-->
+          <!--<div class="myCard">-->
+            <!--<p>name:</p>-->
+            <!--<ion-input placeholder="{{result.name}}" [ngModel]="result.name"></ion-input>-->
+          <!--</div>-->
+          <!--<div class="myCard">-->
+            <!--<p>type:</p>-->
+            <!--<ion-input [ngModel]="result.type"></ion-input>-->
+          <!--</div>-->
+          <!--<div class="myCard">-->
+            <!--<p>country:</p>-->
+            <!--<ion-input [ngModel]="result.country"></ion-input>-->
+          <!--</div>-->
+          <!--<div class="myCard">-->
+            <!--<p>city:</p>-->
+            <!--<ion-input [ngModel]="result.city"></ion-input>-->
+          <!--</div>-->
+          <!--<div class="myCard">-->
+            <!--<p>rate:</p>-->
+            <!--<ion-input [ngModel]="result.rate"></ion-input>-->
+          <!--</div>-->
+        <!--</ion-col>-->
+          <!--</ion-row>-->
+        <!--</ion-grid>-->
+      <!--</ion-card>-->
+    <!--</div>-->
+
+
+  <!--<ion-grid class="grid-categories">-->
+    <!--<ion-row wrap>-->
+      <!--<ion-col col-12 col-md-6 col-lg-4 col-xl-3  *ngFor="let result of results" >-->
+        <!--<ion-col>-->
+          <!--<div class="menu-img" >-->
+            <!--<img src="{{result.photoURL}}"  onerror="this.onerror=null;this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7bEXHvacCtEHaujrzbhOyvjbvtUOgKhaPLBZlmqtD8Y5whKQK';" />-->
+          <!--</div>-->
+        <!--</ion-col>-->
+        <!--<ion-col>-->
+        <!--<div class="myCard">-->
+        <!--<p>name:</p>-->
+        <!--<ion-input placeholder="{{result.name}}" [ngModel]="result.name"></ion-input>-->
+        <!--</div>-->
+        <!--<div class="myCard">-->
+        <!--<p>type:</p>-->
+        <!--<ion-input [ngModel]="result.type"></ion-input>-->
+        <!--</div>-->
+        <!--<div class="myCard">-->
+        <!--<p>country:</p>-->
+        <!--<ion-input [ngModel]="result.country"></ion-input>-->
+        <!--</div>-->
+        <!--<div class="myCard">-->
+        <!--<p>city:</p>-->
+        <!--<ion-input [ngModel]="result.city"></ion-input>-->
+        <!--</div>-->
+        <!--<div class="myCard">-->
+        <!--<p>rate:</p>-->
+        <!--<ion-input [ngModel]="result.rate"></ion-input>-->
+        <!--</div>-->
+        <!--</ion-col>-->
+      <!--</ion-col>-->
+    <!--</ion-row>-->
+  <!--</ion-grid>-->
+
+  <ion-grid class="grid-categories">
+    <ion-row wrap>
+      <ion-col col-12 col-md-6 col-lg-4 col-xl-3  *ngFor="let result of results" >
+  <ion-card>
+    <div class="ion-card-img">
+      <img src="{{result.photoURL}}"  onerror="this.onerror=null;this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7bEXHvacCtEHaujrzbhOyvjbvtUOgKhaPLBZlmqtD8Y5whKQK';" />
+      <div class="ion-card-chip">
+        <div><ion-chip color="secondary">
+          <ion-label color="dark">{{result.type}}</ion-label>
+        </ion-chip></div>
+      </div>
+    </div>
+    <ion-card-content>
+      <ion-card-title>
+        <ion-input placeholder="{{result.name}}" [ngModel]="result.name"></ion-input>
+      </ion-card-title>
+      <div class="countryCity">
+        <div><ion-input [ngModel]="result.country"></ion-input></div>
+        <div><ion-input [ngModel]="result.city"></ion-input></div>
+      </div>
+      <div class="rateDis">
+        <div><ionic3-star-rating
+        activeIcon = "ios-star"
+        defaultIcon = "ios-star-outline"
+        activeColor = "#488aff"
+        defaultColor = "#f4f4f4"
+        readonly="false"
+        [rating]="result.rate">
+      </ionic3-star-rating></div>
+        <div class="distance">
+          <div><p>{{result.distance}}</p></div>
+        <div><p>m</p></div>
+      </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
+
+
+
