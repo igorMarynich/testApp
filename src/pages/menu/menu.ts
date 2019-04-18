@@ -85,61 +85,7 @@ export class MenuPage {
 
 
   ionViewDidLoad() {
-    this.TestSer.getReq().subscribe(
-
-      (results:any) => {
-        this.results = results;
-        this.results2 = results;
-
-        console.log('this.results', this.results)
-        results.map((result:any) => {
-          if(result.googleMap.length <= 1) {
-            this.arraySplit = result.googleMap[0].split(',');
-
-            result.googleMap.pop();
-            result.googleMap.push(eval("(" + this.arraySplit[0] + ")"));
-            result.googleMap.push(eval("(" + this.arraySplit[1] + ")"));
-
-            // console.log('result.googleMap', result.googleMap);
-            }
-          // this.objectPosition.push(result.googleMap);
-        });
-
-        console.log('this.results[i].googleMap[1].widthlatitude', this.results[0].googleMap[1].widthlatitude);
-        console.log('this.results[i].googleMap[1].widthlatitude', this.results[3].googleMap[0].longlatitude);
-
-        let p = 0.017453292519943295;    // Math.PI / 180
-        let c = Math.cos;
-        let a = 0;
-        for (let i = 0; i <= this.results.length - 1; ++i) {
-          a = 0.5 - c((this.myPosition.lat - this.results[i].googleMap[1].widthlatitude) * p) / 2 + c(this.results[i].googleMap[1].widthlatitude * p) * c((this.myPosition.lat) * p) * (1 - c(((this.myPosition.lon - this.results[i].googleMap[0].longlatitude) * p))) / 2;
-          console.log('a', a);
-          this.results[i].distance = Math.floor((12742 * Math.asin(Math.sqrt(a))) * 1000); // 2 * R; R = 6371 km
-
-         this.myArr.push(this.results[i].distance);
-          this.myArr.sort(function(a, b) {
-            return b - a;
-          });
-
-          this.max = this.myArr[0];
-         // this.myArr.sort();
-         console.log('this.myArr.sort', this.myArr);
-         console.log('this.max', this.max);
-
-          // this.max =  Math.max(this.results[i].distance);
-          // console.log('this.distance', this.results[i].distance);
-
-        }
-
-      },
-
-      err => {
-        console.log('this.result',"Error");
-      }
-    );
-
     this.getLocation();
-
   }
 
 
@@ -259,8 +205,8 @@ export class MenuPage {
     })
   }
 
-  getLocation(){
-    this.geolocation.getCurrentPosition().then((res) => {
+  async getLocation(){
+    await this.geolocation.getCurrentPosition().then((res) => {
       // resp.coords.latitude
       // resp.coords.longitude
       //let location= 'lat'+ res.coords.latitude +'lang'+ res.coords.longitude;
@@ -272,6 +218,59 @@ export class MenuPage {
     }).catch((error) => {
       console.log('Error getting location', error);
     });
+
+    this.TestSer.getReq().subscribe(
+
+      (results:any) => {
+        this.results = results;
+        this.results2 = results;
+
+        console.log('this.results', this.results)
+        results.map((result:any) => {
+          if(result.googleMap.length <= 1) {
+            this.arraySplit = result.googleMap[0].split(',');
+
+            result.googleMap.pop();
+            result.googleMap.push(eval("(" + this.arraySplit[0] + ")"));
+            result.googleMap.push(eval("(" + this.arraySplit[1] + ")"));
+
+            // console.log('result.googleMap', result.googleMap);
+          }
+          // this.objectPosition.push(result.googleMap);
+        });
+
+        console.log('this.results[i].googleMap[1].widthlatitude', this.results[0].googleMap[1].widthlatitude);
+        console.log('this.results[i].googleMap[1].widthlatitude', this.results[3].googleMap[0].longlatitude);
+
+        let p = 0.017453292519943295;    // Math.PI / 180
+        let c = Math.cos;
+        let a = 0;
+        for (let i = 0; i <= this.results.length - 1; ++i) {
+          a = 0.5 - c((this.myPosition.lat - this.results[i].googleMap[1].widthlatitude) * p) / 2 + c(this.results[i].googleMap[1].widthlatitude * p) * c((this.myPosition.lat) * p) * (1 - c(((this.myPosition.lon - this.results[i].googleMap[0].longlatitude) * p))) / 2;
+          console.log('a', a);
+          this.results[i].distance = Math.floor((12742 * Math.asin(Math.sqrt(a))) * 1000); // 2 * R; R = 6371 km
+
+          this.myArr.push(this.results[i].distance);
+          this.myArr.sort(function(a, b) {
+            return b - a;
+          });
+
+          this.max = this.myArr[0];
+          // this.myArr.sort();
+          console.log('this.myArr.sort', this.myArr);
+          console.log('this.max', this.max);
+
+          // this.max =  Math.max(this.results[i].distance);
+          // console.log('this.distance', this.results[i].distance);
+
+        }
+
+      },
+
+      err => {
+        console.log('this.result',"Error");
+      }
+    );
   }
 
 

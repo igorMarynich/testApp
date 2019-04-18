@@ -44,28 +44,28 @@
         <form #loginForm="ngForm">
           <ion-list>
             <ion-item class="myInput">
-              <ion-input *ngIf="condition" readonly="{{myState}}" [(ngModel)]="result.firstName" type="text" text name="firstName"></ion-input>
-              <ion-label *ngIf="loginForm.form.touched && result.firstName == 0" color="danger" stacked> FirstName is required.</ion-label>
-              <p *ngIf="!condition">{{result.firstName}}</p>
+              <ion-input *ngIf="condition" readonly="{{myState}}" [(ngModel)]="user.firstName" type="text" text name="firstName"></ion-input>
+              <ion-label *ngIf="loginForm.form.touched && user.firstName == 0" color="danger" stacked> FirstName is required.</ion-label>
+              <p *ngIf="!condition">{{user.firstName}}</p>
             </ion-item>
             <ion-item class="myInput">
-          <ion-input *ngIf="condition" readonly="{{myState}}" [(ngModel)]="result.lastName" type="text" text name="lastName"></ion-input>
-              <ion-label *ngIf="loginForm.form.touched && result.lastName == 0" color="danger" stacked> LastName is required.</ion-label>
-              <p *ngIf="!condition">{{result.lastName}}</p>
+          <ion-input *ngIf="condition" readonly="{{myState}}" [(ngModel)]="user.lastName" type="text" text name="lastName"></ion-input>
+              <ion-label *ngIf="loginForm.form.touched && user.lastName == 0" color="danger" stacked> LastName is required.</ion-label>
+              <p *ngIf="!condition">{{user.lastName}}</p>
             </ion-item>
             <ion-item class="myInput">
-              <ion-input *ngIf="condition" readonly="{{myState}}" type="email" email [(ngModel)]="result.email" name="email"></ion-input>
+              <ion-input *ngIf="condition" readonly="{{myState}}" type="email" email [(ngModel)]="user.email" name="email"></ion-input>
               <ion-label *ngIf="loginForm.form.invalid && loginForm.form.dirty && loginForm.form.touched" color="danger" stacked> Email is required.</ion-label>
-              <p *ngIf="!condition">{{result.email}}</p>
+              <p *ngIf="!condition">{{user.email}}</p>
             </ion-item>
             <ion-item class="myInput">
-          <ion-input *ngIf="condition" readonly="{{myState}}" [(ngModel)]="result.password" type="password" password name="password"></ion-input>
-              <ion-label *ngIf="loginForm.form.touched && result.password == 0" color="danger" stacked> Password is required.</ion-label>
-              <p *ngIf="!condition">{{result.password}}</p>
+          <ion-input *ngIf="condition" readonly="{{myState}}" [(ngModel)]="user.password" type="password" password name="password"></ion-input>
+              <ion-label *ngIf="loginForm.form.touched && user.password == 0" color="danger" stacked> Password is required.</ion-label>
+              <p *ngIf="!condition">{{user.password}}</p>
             </ion-item>
             <div class="myProfileButton">
               <button ion-button color="secondary" [disabled]="condition" (click)="myEnable()">Edit</button>
-              <button ion-button color="primary" [disabled]="loginForm.form.invalid || !condition || result.firstName == 0 || result.lastName == 0 || result.password == 0 " (click)="myDisable()">Save</button>
+              <button ion-button color="primary" [disabled]="loginForm.form.invalid || !condition || user.firstName == 0 || user.lastName == 0 || user.password == 0 " (click)="myDisable()">Save</button>
             </div>
           </ion-list>
         </form>

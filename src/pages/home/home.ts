@@ -4,7 +4,7 @@ import { HttpClient } from "@angular/common/http";
 import { MenuPage } from "../menu/menu";
 import { TestServices } from "../../services/services";
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
-
+import { LocalStor } from '../../services/localStor'
 
 @IonicPage({
   name: 'HomePage',
@@ -29,7 +29,8 @@ export class HomePage {
               private alertController: AlertController,
               public http: HttpClient,
               public TestSer: TestServices,
-              private fb: FormBuilder
+              private fb: FormBuilder,
+              private store: LocalStor
 
   ) {
 
@@ -83,12 +84,14 @@ export class HomePage {
           console.log('response', response);
 
           if( response != null ) {
-            this.navCtrl.push(MenuPage,
-              {
-              userData: this.result
-            }
+            this.navCtrl.push(MenuPage
+            //   ,
+            //   {
+            //   userData: this.result
+            // }
             );
-            console.log('Approved');
+            this.store.set('user', this.result)
+
           }
           else {
             this.statusLogin = false;

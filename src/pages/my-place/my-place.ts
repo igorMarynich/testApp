@@ -25,26 +25,29 @@ export class MyPlacePage {
   result: any;
   resultPlace: any;
 
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
-    this.result = this.navParams.get('userData');
+    // this.result = this.navParams.get('userData');
+
 
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyPlacePage');
-    this.result = this.navParams.get('userData')
+    // this.result = this.navParams.get('userData')
   }
 
   myProfile() {
 
-    this.result = this.navParams.get('userData')
+    // this.result = this.navParams.get('userData')
     console.log('menu result', this.result )
 
-    this.navCtrl.push(MyProfilePage,
-      {
-        userData: this.result
-      }
+    this.navCtrl.push(MyProfilePage
+      // ,
+      // {
+      //   userData: this.result
+      // }
     );
     console.log('Approved');
   }
@@ -62,11 +65,13 @@ export class MyPlacePage {
     //   }
     // );
 
-    this.navCtrl.push(MenuPage,
-      {
-        userData: this.result
-      }
+    this.navCtrl.push(MenuPage
+      // ,
+      // {
+      //   userData: this.result
+      // }
     );
+
   }
 
   home() {

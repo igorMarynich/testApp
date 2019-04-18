@@ -20,6 +20,7 @@ import {GoogleMaps} from "@ionic-native/google-maps";
 import { Geolocation } from '@ionic-native/geolocation';
 import { ReactiveFormsModule } from '@angular/forms';
 import {IonicStorageModule} from "@ionic/storage";
+import {LocalStor} from "../services/localStor"
 
 class CameraMock extends Camera {
   getPicture(options) {
@@ -67,6 +68,7 @@ class CameraMock extends Camera {
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     { provide: Camera, useClass: CameraMock },
+    LocalStor,
     TestServices,
     // CameraOriginal,
     Camera,

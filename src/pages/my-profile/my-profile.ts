@@ -7,6 +7,7 @@ import { MyPlacePage } from "../my-place/my-place";
 import { HomePage } from "../home/home";
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Storage } from "@ionic/storage";
+import {LocalStor} from "../../services/localStor";
 
 
 /**
@@ -38,7 +39,7 @@ export class MyProfilePage {
 
   result: any;
   results: any;
-  key: string = 'user';
+  user: any
 
 
 
@@ -51,7 +52,9 @@ export class MyProfilePage {
               public http: HttpClient,
               private alertController: AlertController,
               private camera: Camera,
-              public storage: Storage ) {
+              public storage: Storage,
+              private store: LocalStor
+              ) {
 
 
       this.firstName = "";
@@ -61,31 +64,38 @@ export class MyProfilePage {
       this.image = "";
       this.condition = false;
 
+    this.user = this.store.get('user');
+    console.log('this.user', this.user);
+    console.log('this.user.firstName', this.user.firstName);
+
+
     //   this.storage.set('userData', this.result);
     //   this.storage.get('userData').then((data) => {
     //   console.log('data', data);
     // });
 
-    this.result = this.navParams.get('userData');
+    // this.result = this.navParams.get('userData');
+    //
+    //
+    // this.storage.set(this.key, JSON.stringify(this.result));
+    // this.storage.get(this.key).then((val) => {
+    //   if(val != null && val != undefined) {
+    //     console.log('ok storage');
+    //     this.result = JSON.parse(val);
+    //
+    //     console.log('this.result storage', this.result);
+    //
+    //     this.firstName = this.result.firstName;
+    //     this.lastName = this.result.lastName;
+    //     this.email = this.result.email;
+    //     this.password = this.result.password;
+    //
+    //   } else {
+    //     console.log('error storage');
+    //   }
+    // });
 
 
-    this.storage.set(this.key, JSON.stringify(this.result));
-    this.storage.get(this.key).then((val) => {
-      if(val != null && val != undefined) {
-        console.log('ok storage');
-        this.result = JSON.parse(val);
-
-        console.log('this.result storage', this.result);
-
-        this.firstName = this.result.firstName;
-        this.lastName = this.result.lastName;
-        this.email = this.result.email;
-        this.password = this.result.password;
-
-      } else {
-        console.log('error storage');
-      }
-    });
 
     // console.log('this.result ', this.result )
     // console.log('this.result.email', this.result.email);
@@ -214,8 +224,8 @@ export class MyProfilePage {
       console.log(this.result);
       console.log('save');
     // }
-
-
+    this.store.set('user', this.user)
+    console.log('this.user', this.user);
   }
 
   places() {
